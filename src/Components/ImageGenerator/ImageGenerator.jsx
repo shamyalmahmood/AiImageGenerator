@@ -4,10 +4,11 @@ import "./ImageGenerator.css";
 import download from "../assets/download.jpeg";
 
 const ImageGenerator = () => {
+    
     const [imgUrl, setImgUrl] = useState("/");
     let inputRef = useRef(null);
     const [loading, setLoading] = useState(false);
-
+    
     const ImageGenerator = async () => {
         if (inputRef.current.value === "") {
             return 0;
@@ -19,9 +20,10 @@ const ImageGenerator = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer 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`,
+                "Authorization": `Bearer ${process.env.REACT_APP_API_KEY}`,
                 "User-Agent": "Chrome",
             },
+
             body: JSON.stringify({
                 prompt: `${inputRef.current.value}`,
                 n: 1,
@@ -36,7 +38,7 @@ const ImageGenerator = () => {
     }
 
     return (
-     <>
+     <div className="align-items-center">
         <div className="ai-image-generator">
             <div className="header">AI Image <span>Generator</span></div>
             <div className="img-loading">
@@ -55,7 +57,7 @@ const ImageGenerator = () => {
             <input type="text" ref={inputRef} className="search-input" placeholder="Describe the image you want to create."/>
             <div className="generate-btn" onClick={()=>{ImageGenerator()}}>Generate</div>
         </div>
-     </>
+     </div>
     );
 }
 
