@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useState } from "react";
 import "./ImageGenerator.css";
 import download from "../assets/download.jpeg";
+import Navbar from "../Navbar/Navbar";
 
 const ImageGenerator = () => {
     
@@ -38,7 +39,31 @@ const ImageGenerator = () => {
     }
 
     return (
-     <div className="align-items-center">
+     <>
+        <Navbar/>
+
+        <section className="intro">
+            <h1>Generate Stunning AI-Generated Images</h1>
+            <p>Transform your creative ideas into beautiful AI-generated visuals in seconds. Just type a description and let AI do the magic!</p>
+        </section>
+
+        <section className="features">
+            <div className="feature-card">
+                <h2>Fast Generation</h2>
+                <p>AI-powered image creation in just a few seconds.</p>
+            </div>
+
+            <div className="feature-card">
+                <h2>Creative Freedom</h2>
+                <p>Describe anything and get a unique AI-generated image.</p>
+            </div>
+
+            <div className="feature-card">
+                <h2>High-Quality Images</h2>
+                <p>All images are crisp and optimized for modern web designs.</p>
+            </div>
+        </section>
+        
         <div className="ai-image-generator">
             <div className="header">AI Image <span>Generator</span></div>
             <div className="img-loading">
@@ -57,7 +82,7 @@ const ImageGenerator = () => {
             <input type="text" ref={inputRef} className="search-input" placeholder="Describe the image you want to create."/>
             <div className="generate-btn" onClick={()=>{ImageGenerator()}}>Generate</div>
         </div>
-     </div>
+     </>
     );
 }
 
